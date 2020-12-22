@@ -9,7 +9,7 @@ const SearchField = ({fetchFlightData }) => {
 
     const [searchValue, setFlightSearchText] = useState(searchString)  
 
-    
+
     const { flightStatus } = useParams()
     const { search } = useLocation();
     const searchString = qs.parse(search, { ignoreQueryPrefix: true }).search;
@@ -17,6 +17,7 @@ const SearchField = ({fetchFlightData }) => {
     let history = useHistory();
     
 
+    
     useEffect(() => {
         fetchFlightData();
     }, [])

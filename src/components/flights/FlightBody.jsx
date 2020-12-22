@@ -3,10 +3,13 @@ import moment from 'moment';
 import FlightHeader from './FlightHeader'
 
 const FlightBody = ({ transitsToday }) => {
-    return (<>
+    return (
+    <>
         <FlightHeader />
         {transitsToday.length > 0 && transitsToday.map((item, key) => {
+
             let status;
+
             if (item.status === 'LN') {
                 status = 'Landed'
             }
@@ -27,6 +30,8 @@ const FlightBody = ({ transitsToday }) => {
             }
 
             let localTime;
+
+
             if (item.status === 'LN') {
                 localTime = moment(item.timeToStand).format('HH:mm');
             }
@@ -55,8 +60,7 @@ const FlightBody = ({ transitsToday }) => {
                             : status}
                     </div>
                     <div className='transit-string__airlines'>
-                        <img className='img_style' style={{ width: '60px', padding: ' 5px' }}
-                            src={`${item.codeShareData[0].airline.en.logoSmallName}`} />
+                        <img className='img_style' src={`${item.codeShareData[0].airline.en.logoSmallName}`} />
                         <span>{item.airline.en.name}</span>
                     </div>
                     <div className='transit-string__transit-number'>

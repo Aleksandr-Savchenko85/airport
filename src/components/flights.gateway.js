@@ -13,4 +13,4 @@ export const getFlightData = () =>
     });
 
    
-//console.log(getFlightData())
+console.log(getFlightData())

@@ -7,20 +7,22 @@ import { connect } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import qs from 'qs';
 
-const FlightsList = ({ flightData, isFetching }) => {
+const FlightsList = ({ flightData }) => {
+
+
     const { flightStatus } = useParams()
     const { search } = useLocation();
     const searchString = qs.parse(search, { ignoreQueryPrefix: true }).search;
-    if (isFetching) {
-        return <Spinner />
-    }
+    //console.log(search)
     if (!flightData) {
         return null
     }
 
     const { body: { departure, arrival } } = flightData;
+
+
     let transitsToday = [];
-    if (flightStatus === 'departures') {
+     if (flightStatus === 'departures') {
         if (searchString) {
             transitsToday = departure.filter(date => date.actual?.split('T')[0] === currentDate)
                 .filter(flight => flight.codeShareData[0].codeShare === searchString)
@@ -34,17 +36,17 @@ const FlightsList = ({ flightData, isFetching }) => {
         } else {
             transitsToday = arrival.filter(date => date.actual?.split('T')[0] === currentDate)
         }
-    }
+    } 
 
     return (
         <>
             <Navigation
-             flightStatus={flightStatus} 
-             search={search} />
+                flightStatus={flightStatus}
+                search={search} />
             {(flightStatus) &&
                 <div className='containerList'>
-                    <FlightBody 
-                    transitsToday={transitsToday} />
+                    <FlightBody
+                        transitsToday={transitsToday} />
                 </div>
             }
         </>
