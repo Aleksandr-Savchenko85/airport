@@ -38,10 +38,13 @@ const FlightsList = ({ flightData, isFetching }) => {
 
     return (
         <>
-            <Navigation flightStatus={flightStatus} search={search} />
+            <Navigation
+             flightStatus={flightStatus} 
+             search={search} />
             {(flightStatus) &&
                 <div className='containerList'>
-                    <FlightBody transitsToday={transitsToday} />
+                    <FlightBody 
+                    transitsToday={transitsToday} />
                 </div>
             }
         </>

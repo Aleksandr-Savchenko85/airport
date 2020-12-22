@@ -11,8 +11,7 @@ export const flightDataRecieved = (flightData) => {
     }
 };
 
-
-export const fetchFlightData = (flight) => {
+ export const fetchFlightData = (flight) => {
     return function (dispatch) {
         getFlightData(flight)
             .then(flightData => {
@@ -20,3 +19,4 @@ export const fetchFlightData = (flight) => {
             })
     }
 }
+ 

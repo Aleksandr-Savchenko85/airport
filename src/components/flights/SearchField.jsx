@@ -3,15 +3,19 @@ import { connect } from 'react-redux';
 import qs from 'qs';
 import * as flightActions from '..//flights.actions';
 import { useLocation, BrowserRouter, useParams, useHistory } from 'react-router-dom';
-import { flightDataSelector } from '..//flights.selectors';
+import {flightDataSelector} from '..//flights.selectors';
 
-const SearchField = ({ fetchFlightData }) => {
+const SearchField = ({fetchFlightData }) => {
+
+    const [searchValue, setFlightSearchText] = useState(searchString)  
+
+    
     const { flightStatus } = useParams()
     const { search } = useLocation();
     const searchString = qs.parse(search, { ignoreQueryPrefix: true }).search;
 
     let history = useHistory();
-    const [searchValue, setFlightSearchText] = useState(searchString)
+    
 
     useEffect(() => {
         fetchFlightData();
@@ -53,6 +57,6 @@ const mapState = state => {
     }
 }
 const mapDispatch = {
-        fetchFlightData: flightActions.fetchFlightData,
+       fetchFlightData: flightActions.fetchFlightData,
 }
 export default connect(mapState, mapDispatch)(SearchField)

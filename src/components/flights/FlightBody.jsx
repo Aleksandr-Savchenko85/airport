@@ -36,6 +36,10 @@ const FlightBody = ({ transitsToday }) => {
                 localTime = moment(item.timeToStand).format('HH:mm');
 
             }
+
+           
+
+            
             return (
                 <div className='transit-string__info' key={key} >
                     <div className='transit-string__terminal' >
